@@ -1,0 +1,111 @@
+html {
+    box-sizing: border-box;
+    
+}
+
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+}
+
+:root {
+    --background-color: #5f9ea0;
+    --clear-color: #A0615F;
+    --clear-hover-color: #704443;
+    --calculator-color: #815FA0;
+    --operator-color: #9EA05F;
+    --operator-hover-color:#82844E; 
+    --equal-color: #7EA05F;
+    --equal-hover-color: #52693E;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+#calculator-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+#calculator {
+    background-color: var(--calculator-color);
+    border-radius: 20px;
+    box-shadow: 10px 4px 5px black;
+    height: 400px;
+    width: 300px;
+    padding: 25px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+#display-container {
+    grid-column: span 4;
+    border: 2px solid black;
+    border-radius: 25px;
+    box-shadow: 8px 5px 2px black;
+    display: flex;
+    justify-content: flex-end;
+    padding-top: 9px;
+    padding-right: 20px;
+    margin-bottom: 5px;
+    display: grid;
+    background-color: white;
+}
+
+#display-value, #display-inputs {
+    display: block;
+}
+
+#all-clear {
+    grid-column: span 2;
+}
+
+.clear {
+    background-color: var(--clear-color);
+}
+
+.clear:hover {
+    background-color: var(--clear-hover-color);
+}
+
+.operation {
+    background-color: var(--operator-color);
+}
+
+.operation:hover {
+    background-color: var(--operator-hover-color);
+}
+
+#equal-sign {
+    grid-column: span 2;
+    background-color: var(--equal-color);
+}
+
+#equal-sign:hover {
+    background-color: var(--equal-hover-color);
+}
+
+.btn {
+    border: 1px solid black;
+    font-family: 'Kanit', sans-serif;
+    box-shadow: 5px 2px 2px black;
+}
+
+.btn:active {
+    position: relative;
+    top: 2px;
+    left: 5px;
+    box-shadow: none;
+}
+
+@media screen and (min-width: 800px) {
+    #calculator {
+        height: 550px;
+        width: 400px;
+    }
+}
