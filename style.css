@@ -94,6 +94,7 @@ body {
     border: 1px solid black;
     font-family: 'Kanit', sans-serif;
     box-shadow: 5px 2px 2px black;
+    border-radius: 5px;
 }
 
 .btn:active {
