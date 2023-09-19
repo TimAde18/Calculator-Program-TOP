@@ -34,7 +34,7 @@ body {
 #calculator {
     background-color: var(--calculator-color);
     border-radius: 20px;
-    box-shadow: 10px 4px 5px black;
+    box-shadow: 10px 8px 2.5px black;
     height: 400px;
     width: 300px;
     padding: 25px;
@@ -47,7 +47,7 @@ body {
     grid-column: span 4;
     border: 2px solid black;
     border-radius: 25px;
-    box-shadow: 8px 5px 2px black;
+    box-shadow: 8px 8px 2px black;
     display: flex;
     justify-content: flex-end;
     padding-top: 9px;
@@ -91,9 +91,9 @@ body {
 }
 
 .btn {
-    border: 1px solid black;
+    border: 2px solid black;
     font-family: 'Kanit', sans-serif;
-    box-shadow: 5px 2px 2px black;
+    box-shadow: 5px 5px 2px black;
     border-radius: 5px;
 }
 
