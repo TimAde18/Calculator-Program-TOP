@@ -52,13 +52,10 @@ body {
     justify-content: flex-end;
     padding-top: 9px;
     padding-right: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 1px;
     display: grid;
     background-color: white;
-}
-
-#display-value, #display-inputs {
-    display: block;
+    height: 70px;
 }
 
 #all-clear {
