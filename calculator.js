@@ -57,13 +57,10 @@ function addDecimal() {
             }
         }
         if (secondNumberFlag) {
-            console.log(secondNumberValue)
             if (secondNumberValue === "") {
-                console.log(secondNumberValue)
                 secondNumber = parseFloat(secondNumberValue += "0.");
                 inputContent += "0.";
             } else {
-                console.log(secondNumberValue)
                 secondNumber = parseFloat(secondNumberValue += ".");
                 inputContent += ".";
             }
@@ -120,8 +117,7 @@ function addOperator (operatorSymbol) {
     if (secondNumberFlag) {
         isDecimalPresent = false;
         displayValue.textContent = "";
-        inputResult = operate(operator, firstNumber, secondNumber);
-        firstNumber = parseFloat(inputResult);
+        firstNumber = parseFloat(operate(operator, firstNumber, secondNumber));
         secondNumberValue = "";
         secondNumber = 0; 
         inputContent = firstNumber + ` ${operatorSymbol} `;
@@ -131,9 +127,7 @@ function addOperator (operatorSymbol) {
         secondNumberFlag = true;
         isDecimalPresent = false;
         firstNumber = parseFloat(inputContent);
-        console.log(operatorSymbol)
         inputContent += ` ${operatorSymbol} `;
-        console.log(inputContent);
         updateInputDisplay();
         operator = `${operatorSymbol}`;
     };
@@ -142,12 +136,12 @@ function addOperator (operatorSymbol) {
 function minusSymbol () {
     if (inputContent === "" || inputContent.endsWith(" + ") || inputContent.endsWith(" x ") || inputContent.endsWith(" ÷ ")) {
         inputContent +="-";
-        updateInputDisplay;
+        updateInputDisplay();
     }
     else if (inputContent.endsWith(" - ")) {
         inputContent +="-";
         addOperator("+");
-        updateInputDisplay;
+        updateInputDisplay();
         }
         else {
         addOperator("-");
