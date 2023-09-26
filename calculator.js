@@ -6,16 +6,24 @@ let secondNumberFlag = false;
 function operate(operator, num1, num2) {
     switch (operator) {
         case "+":
-            return Math.round((num1 + num2) * 100) / 100;
+            result = num1 + num2;
+            break;
         case "-":
-            return Math.round((num1 - num2) * 100) / 100;
+            result = num1 - num2;
+            break;
         case "x":
-            return Math.round((num1 * num2) * 100) / 100;
+            result = num1 * num2;
+            break;
         case "÷":
-            return Math.round((num1 / num2) * 100) / 100;
+            result = num1 / num2;
+            break;
         default:
             alert("Please enter a number");
-    };
+    }
+    if (result < 0 && (operator === "x" || operator === "÷")) {
+        result = Math.abs(result);
+    }
+    return Math.round(result * 100) / 100;
 } ;
 
 let inputContent = "";
@@ -37,241 +45,130 @@ function updateValueDisplay() {
 
 const decimalBtn = document.getElementById("decimal");
 
-decimalBtn.addEventListener("click", () => {
+decimalBtn.addEventListener("click", () => addDecimal());
+
+function addDecimal() {
     if (!isDecimalPresent) {
-        inputContent += ".";
+        if (!secondNumberFlag) {
+            if (inputContent === "") {
+                inputContent += "0.";
+            } else {
+                inputContent += "."; 
+            }
+        }
         if (secondNumberFlag) {
-            secondNumber = parseFloat(secondNumberValue += ".")
-        } 
-        if (displayValue.textContent === "")
+            console.log(secondNumberValue)
+            if (secondNumberValue === "") {
+                console.log(secondNumberValue)
+                secondNumber = parseFloat(secondNumberValue += "0.");
+                inputContent += "0.";
+            } else {
+                console.log(secondNumberValue)
+                secondNumber = parseFloat(secondNumberValue += ".");
+                inputContent += ".";
+            }
+        }
         isDecimalPresent = true;
     } 
     updateInputDisplay();
-});
+}
 
-document.getElementById("0").addEventListener("click", () => {
+
+
+document.getElementById("0").addEventListener("click", () => addNumber(0));
+
+document.getElementById("1").addEventListener("click", () => addNumber(1));
+
+document.getElementById("2").addEventListener("click", () => addNumber(2));
+
+document.getElementById("3").addEventListener("click", () => addNumber(3));
+
+document.getElementById("4").addEventListener("click", () => addNumber(4));
+
+document.getElementById("5").addEventListener("click", () => addNumber(5));
+
+document.getElementById("6").addEventListener("click", () => addNumber(6));
+
+document.getElementById("7").addEventListener("click", () => addNumber(7));
+
+document.getElementById("8").addEventListener("click", () => addNumber(8));
+
+document.getElementById("9").addEventListener("click", () => addNumber(9));
+
+function addNumber(num) {
     if (displayValue.textContent !== "") {
-        preparesNextNumber(0);
+        preparesNextNumber(num);
     } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "0");
-        inputContent += 0;
+        secondNumber = parseFloat(secondNumberValue += `${num}`);
+        inputContent += num;
     }
     else {
-        inputContent += 0;
+        inputContent += num;
     };
     updateInputDisplay();
-});
+}
 
-document.getElementById("1").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(1);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "1");
-        inputContent += 1;
-    }
-    else {
-        inputContent += 1;
-    };
-    updateInputDisplay();
-});
+document.getElementById("addition").addEventListener("click", () => addOperator("+"));
 
-document.getElementById("2").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(2);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "2");
-        inputContent += 2;
-    }
-    else {
-        inputContent += 2;
-    };
-    updateInputDisplay();
-});
+document.getElementById("subtraction").addEventListener("click", () => minusSymbol());
 
-document.getElementById("3").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(3);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "3");
-        inputContent += 3;
-    }
-    else {
-        inputContent += 3;
-    };
-    updateInputDisplay();
-});
+document.getElementById("multiplication").addEventListener("click", () => addOperator("x"));
 
-document.getElementById("4").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(4);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "4");
-        inputContent += 4;
-    }
-    else {
-        inputContent += 4;
-    };
-    updateInputDisplay();
-});
+document.getElementById("division").addEventListener("click", () => addOperator("÷"));
 
-document.getElementById("5").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(5);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "5");
-        inputContent += 5;
-    }
-    else {
-        inputContent += 5;
-    };
-    updateInputDisplay();
-});
-
-document.getElementById("6").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(6);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "6");
-        inputContent += 6;
-    }
-    else {
-        inputContent += 6;
-    };
-    updateInputDisplay();
-});
-
-document.getElementById("7").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(7);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "7");
-        inputContent += 7;
-    }
-    else {
-        inputContent += 7;
-    };
-    updateInputDisplay();
-});
-
-document.getElementById("8").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(8);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "8");
-        inputContent += 8;
-    }
-    else {
-        inputContent += 8;
-    };
-    updateInputDisplay();
-});
-
-document.getElementById("9").addEventListener("click", () => {
-    if (displayValue.textContent !== "") {
-        preparesNextNumber(9);
-    } else if (secondNumberFlag) {
-        secondNumber = parseFloat(secondNumberValue += "9");
-        inputContent += 9;
-    }
-    else {
-        inputContent += 9;
-    };
-    updateInputDisplay();
-});
-
-document.getElementById("addition").addEventListener("click", () => {
+function addOperator (operatorSymbol) {
     if (secondNumberFlag) {
         isDecimalPresent = false;
         displayValue.textContent = "";
         inputResult = operate(operator, firstNumber, secondNumber);
-        firstNumber = inputResult;
+        firstNumber = parseFloat(inputResult);
         secondNumberValue = "";
-        inputContent = firstNumber + " + "
+        secondNumber = 0; 
+        inputContent = firstNumber + ` ${operatorSymbol} `;
         updateInputDisplay();
-        operator = "+"
+        operator = `${operatorSymbol}`;
     } else {
         secondNumberFlag = true;
         isDecimalPresent = false;
         firstNumber = parseFloat(inputContent);
-        inputContent += " + ";
+        console.log(operatorSymbol)
+        inputContent += ` ${operatorSymbol} `;
+        console.log(inputContent);
         updateInputDisplay();
-        operator = "+";
+        operator = `${operatorSymbol}`;
     };
-});
+}
 
-document.getElementById("subtraction").addEventListener("click", () => {
-    if (secondNumberFlag) {
-        isDecimalPresent = false;
-        displayValue.textContent = "";
-        inputResult = operate(operator, firstNumber, secondNumber);
-        firstNumber = inputResult;
-        secondNumberValue = "";
-        inputContent = firstNumber + " - ";
-        updateInputDisplay();
-        console.log(firstNumber)
-        console.log(secondNumber)
-        operator = "-";
-    } else {
-        secondNumberFlag = true;
-        isDecimalPresent = false;
-        firstNumber = parseFloat(inputContent);
-        inputContent += " - ";
-        updateInputDisplay();
-        operator = "-";
-    };
-});
-
-document.getElementById("multiplication").addEventListener("click", () => {
-    if (secondNumberFlag) {
-        isDecimalPresent = false;
-        displayValue.textContent = "";
-        inputResult = operate(operator, firstNumber, secondNumber);
-        firstNumber = inputResult;
-        secondNumberValue = "";
-        inputContent = firstNumber + " x ";
-        updateInputDisplay();
-        operator = "x";
-    } else {
-        secondNumberFlag = true;
-        isDecimalPresent = false;
-        firstNumber = parseFloat(inputContent);
-        inputContent += " x ";
-        updateInputDisplay();
-        operator = "x";
-    };
-});
-
-document.getElementById("division").addEventListener("click", () => {
-    if (secondNumberFlag) {
-        isDecimalPresent = false;
-        displayValue.textContent = "";
-        inputResult = operate(operator, firstNumber, secondNumber);
-        firstNumber = inputResult;
-        secondNumberValue = "";
-        inputContent = firstNumber + " ÷ ";
-        updateInputDisplay();
-        operator = "÷";
-    }  else {
-        secondNumberFlag = true;
-        isDecimalPresent = false;
-        firstNumber = inputContent;
-        inputContent += " ÷ ";
-        updateInputDisplay();
-        operator = "÷";
-    };
-});
+function minusSymbol () {
+    if (inputContent === "" || inputContent.endsWith(" + ") || inputContent.endsWith(" x ") || inputContent.endsWith(" ÷ ")) {
+        inputContent +="-";
+        updateInputDisplay;
+    }
+    else if (inputContent.endsWith(" - ")) {
+        inputContent +="-";
+        addOperator("+");
+        updateInputDisplay;
+        }
+        else {
+        addOperator("-");
+    }
+}
 
 document.getElementById("equal-sign").addEventListener("click", () => {
-    if (secondNumberFlag) {
-        console.log(firstNumber)
-        console.log(secondNumber)
+    if (firstNumber === 0 && secondNumber === 0 && operator == "÷") {
+        alert("You know you can't do that smh.")
+        displayValue.textContent = "You Fool..."
+        updateValueDisplay;
+    } else if (secondNumberFlag) {
+        isDecimalPresent = true;
         inputResult = operate(operator, firstNumber, secondNumber);
-        console.log(inputResult);
         updateValueDisplay();
     }
 })
 
-document.getElementById("all-clear").addEventListener("click", () => {
+document.getElementById("all-clear").addEventListener("click", () => clearAllInputs())
+
+function clearAllInputs () {
     inputContent = "";
     inputResult = "";
     firstNumber = "";
@@ -282,7 +179,7 @@ document.getElementById("all-clear").addEventListener("click", () => {
     updateValueDisplay();
     secondNumberFlag = false;
     isDecimalPresent = false;
-})
+}
 
 function preparesNextNumber (num) {
     inputContent = "";
@@ -300,13 +197,13 @@ function preparesNextNumber (num) {
     updateInputDisplay();
 }
 
-document.getElementById("clear").addEventListener("click", () => {
-    console.log(displayValue);
+document.getElementById("clear").addEventListener("click", () => clearInputs());
+
+function clearInputs () {
     if (displayValue.textContent === "") {
         if (secondNumberFlag) {
             if (secondNumberValue === "") {
                 inputContent = inputContent.substring(0, inputContent.length - 2);
-                console.log(inputContent);
                 updateInputDisplay();
                 secondNumberFlag = false;
             } else {
@@ -315,14 +212,83 @@ document.getElementById("clear").addEventListener("click", () => {
 
                 secondNumberValue = secondNumberValue.substring(0, secondNumberValue.length - 1);
                 secondNumber = parseFloat(secondNumberValue);
-                isDecimalPresent = false;
+
+                if (!secondNumberValue.includes(".")) {
+                    isDecimalPresent = false;
+                }
             };
         } else {
             inputContent = inputContent.substring(0, inputContent.length - 1);
             updateInputDisplay();
-            isDecimalPresent = false;
+            if(!inputContent.includes(".")) {
+                isDecimalPresent = false;
+            }
         };
     } else {
         alert("You cannot do that");
     }
-});
+}
+
+// Allowing keyboard use
+
+
+window.addEventListener("keydown", function(e) {
+    if (e.key === "0") {
+        addNumber(0);
+    } 
+    if (e.key === "1") {
+        addNumber(1);
+    } 
+    if (e.key === "2") {
+        addNumber(2);
+    } 
+    if (e.key === "3") {
+        addNumber(3);
+    } 
+    if (e.key === "4") {
+        addNumber(4);
+    } 
+    if (e.key === "5") {
+        addNumber(5);
+    } 
+    if (e.key === "6") {
+        addNumber(6);
+    } 
+    if (e.key === "7") {
+        addNumber(7);
+    } 
+    if (e.key === "8") {
+        addNumber(8);
+    } 
+    if (e.key === "9") {
+        addNumber(9);
+    } 
+    if (e.key === ".") {
+        addDecimal();
+    } 
+    if (e.key === "+") {
+        addOperator("+");
+    } 
+    if (e.key === "-") {
+        minusSymbol();
+    } 
+    if (e.key === "*") {
+        addOperator("x");
+    } 
+    if (e.key === "/") {
+        e.preventDefault();
+        addOperator("÷");
+    } 
+    if (e.key === "=" || e.key === "Enter") {
+        if (secondNumberFlag) {
+            inputResult = operate(operator, firstNumber, secondNumber);
+            updateValueDisplay();
+        }
+    }
+    if (e.key === "Backspace") {
+        clearInputs();
+    }
+    if (e.key === "Delete") {
+        clearAllInputs();
+    }
+})
